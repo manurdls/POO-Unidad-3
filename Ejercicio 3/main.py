@@ -1,6 +1,6 @@
 import csv, os
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from claseContrato import Contrato, Jugador, Equipo
 
@@ -55,19 +55,17 @@ def menu(equipos, jugadores, contratos):
               "4.Obtener importe de contratos\n"
               "5.Guardar Contratos\n"
               "0.Salir")
-        opt = int(input('Ingrese una opcion: '))
+        opt = input('Ingrese una opcion: ')
         os.system('cls')
         print('---------------------------------------------------------------------------------------------')
         print("***IMPORTANTE*** USTED PUEDE CANCELAR LA OPERACION EN CUALQUIER MOMENTO SI INGRESA 'cancelar'")
         print('---------------------------------------------------------------------------------------------')
+        if opt.lower() == 'cancelar':
+            opt = 0
+        else:
+            opt = int(opt)
         menu.option(opt)
         exit = opt==0
-
-def asdf():
-    cadena = '1/1/1994'
-    fecha = datetime.strptime(cadena, "%d/%m/%Y")
-    dentro_de_6_meses = fecha + timedelta(days=365/2)
-    print('Dentro de seis meses: ',dentro_de_6_meses)
 
 if __name__ == '__main__':
     #test()
@@ -75,6 +73,5 @@ if __name__ == '__main__':
     #equipos.mostrarEquipos()
     jugadores = cargar_datos_jugadores()
     #jugadores.mostrarJugadores()
-    #asdf()
     contratos = ManejadorContratos()
     menu(equipos, jugadores, contratos)

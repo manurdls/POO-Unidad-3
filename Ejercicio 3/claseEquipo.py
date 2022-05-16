@@ -31,3 +31,9 @@ class Equipo(object):
 
     def getNombre(self):
         return self.__nombre
+
+    def getContratos(self):
+        retorno = None
+        if len(self.__contratos) != 0:
+            retorno = self.__contratos
+        return retorno

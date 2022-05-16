@@ -28,10 +28,12 @@ class Contrato(object):
 
 
     def __str__(self):
+        fecha_inicio = str(self.__fecha_inicio.day) + '/' + str(self.__fecha_inicio.month) + '/' + str(self.__fecha_inicio.year)
+        fecha_fin = str(self.__fecha_fin.day) + '/' + str(self.__fecha_fin.month) + '/' + str(self.__fecha_fin.year)
         return 'Jugador: [{}]\nEquipo: [{}]\nContrato: {} ~ {}\nSueldo: {}'.format(self.__jugador,
                                                                                 self.__equipo,
-                                                                                self.__fecha_inicio,
-                                                                                self.__fecha_fin,
+                                                                                fecha_inicio,
+                                                                                fecha_fin,
                                                                                 self.__pago_mensual
                                                                                 )
 

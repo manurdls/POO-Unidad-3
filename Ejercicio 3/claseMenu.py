@@ -10,10 +10,6 @@ from claseManejadorContratos import ManejadorContratos
 
 from claseContrato import Contrato
 
-from claseEquipo import Equipo
-
-from claseJugador import Jugador
-
 class Menu(object):
     __switcher: dict
     __equipos: ManejadorEquipos
@@ -61,21 +57,38 @@ class Menu(object):
                                 if pago_mensual:
                                     contrato = Contrato(fecha_inicio, fecha_fin, pago_mensual, jugador, equipo)
                                     self.__contratos.agregarContrato(contrato)
+                                    del contrato
                                     os.system('cls')
                                     print('El contrato se agregó correctamente...')
                     else: print('Al parecer está intentando agregar un contrato que incluye a un Jugador y un Equipo que ya \nestan vinculados por un contrato. Recuerde que este algoritmo implementa una Clase Asociacion \ny no un Clase que Modela una Asociacion.')
 
-
-
-
     def inciso2(self):
-        pass
+        dni_jugador = self._ingresar_dni()
+        if dni_jugador:
+            indice_jugador = self.__jugadores.buscarJugador(dni_jugador)
+            if indice_jugador != None:
+                jugador = self.__jugadores.getJugador(indice_jugador)
+                self.__contratos.consultar_jugador_contratado(jugador)
+                del jugador
+
 
     def inciso3(self):
-        pass
+        nombre_equipo = self._ingresar_cadena()
+        if nombre_equipo:
+            indice_equipo = self.__equipos.buscarEquipo(nombre_equipo)
+            if indice_equipo != None:
+                equipo = self.__equipos.getEquipo(indice_equipo)
+                self.__contratos.consultar_contratos_de_un_equipo(equipo)
+                del equipo
 
     def inciso4(self):
-        pass
+        nombre_equipo = self._ingresar_cadena()
+        if nombre_equipo:
+            indice_equipo = self.__equipos.buscarEquipo(nombre_equipo)
+            if indice_equipo != None:
+                equipo = self.__equipos.getEquipo(indice_equipo)
+                self.__contratos.obtener_importe_de_contratos(equipo)
+                del equipo
 
     def inciso5(self):
         pass
